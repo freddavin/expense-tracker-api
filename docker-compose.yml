@@ -1,0 +1,28 @@
+services:
+  app:
+    build: .
+    container_name: expenses_app
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - PORT=${PORT}
+      - SECRET_KEY=${SECRET_KEY}
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+
+  postgres:
+    image: bitnami/postgresql:latest
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - expenses_db:/bitnami/postgresql
+
+volumes:
+  expenses_db:
