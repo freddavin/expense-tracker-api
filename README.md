@@ -7,6 +7,8 @@ Expense Tracker API é um serviço de backend desenvolvido em Node.js, com a fin
 - Cadastro de usuários.
 - Login de usuários.
 - Tokens JWT para validação e criação de contexto.
+- Bcrypt para criptografia de senha.
+- Zod para validação de schema. 
 - Filtro de despesas por:
   - Semana anterior
   - Mês anterior
@@ -53,7 +55,7 @@ Expense Tracker API é um serviço de backend desenvolvido em Node.js, com a fin
     ```
 
 4. **Execute o Docker Compose:**
-- Execute o seguinte comando com docker compose para criar as imagens do postgres e da api:
+- Execute o seguinte comando com docker compose para criar as imagens do postgres e da api e, em seguida, iniciar os containers:
   ```bash
   docker compose up -d
   ```
@@ -81,16 +83,16 @@ Expense Tracker API é um serviço de backend desenvolvido em Node.js, com a fin
     - `PUT /expenses/{id}`
     - `DELETE /expenses/{id}`
 
-As categorias de despesas suportadas são:
+  As categorias de despesas suportadas são:
 
-- Groceries
-- Leisure
-- Electronics
-- Utilities
-- Clothing
-- Health
-- Food
-- Others
+  - Groceries
+  - Leisure
+  - Electronics
+  - Utilities
+  - Clothing
+  - Health
+  - Food
+  - Others
 
 ## Considerações
 
