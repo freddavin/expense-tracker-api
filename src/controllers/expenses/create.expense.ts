@@ -1,18 +1,12 @@
 import { Request, Response } from 'express';
 import { prisma } from '../../libs/prisma';
-import z from 'zod';
-import { Category } from './types/enums';
+import { CreateExpenseSchema } from '../../libs/zod';
 
 export const createExpense = async (req: Request, res: Response) => {
   const { context } = res.locals;
-
-  const expenseSchema = z.object({
-    description: z.string(),
-    category: z.nativeEnum(Category),
-    amount: z.number().positive(),
-    date: z.string().datetime(),
-  });
-  const { description, category, amount, date } = expenseSchema.parse(req.body);
+  const { description, category, amount, date } = CreateExpenseSchema.parse(
+    req.body
+  );
 
   const { id } = await prisma.expense.create({
     data: {

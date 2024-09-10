@@ -1,20 +1,12 @@
-import { NextFunction, Request, Response } from 'express';
-import z from 'zod';
+import { Request, Response } from 'express';
 import { prisma } from '../../libs/prisma';
 import { compareSync } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { ErrorCode, UnauthorizedError } from '../../exceptions';
+import { LoginSchema } from '../../libs/zod';
 
-export const login = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const loginSchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(8),
-  });
-  const { email, password } = loginSchema.parse(req.body);
+export const login = async (req: Request, res: Response) => {
+  const { email, password } = LoginSchema.parse(req.body);
 
   const user = await prisma.user.findFirst({
     where: {

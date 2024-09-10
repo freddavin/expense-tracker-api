@@ -1,15 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { hashSync } from 'bcrypt';
-import z, { ZodError } from 'zod';
 import { prisma } from '../../libs/prisma';
 import { BadRequestError, ErrorCode } from '../../exceptions';
 import { SignupSchema } from '../../libs/zod';
 
-export const signup = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const signup = async (req: Request, res: Response) => {
   const { name, email, password } = SignupSchema.parse(req.body);
 
   const user = await prisma.user.findFirst({ where: { email } });

@@ -5,4 +5,5 @@ export enum ErrorCode {
   INTERNAL = 1004,
   UNAUTHORIZED = 1005,
   NOT_FOUND = 1006,
+  UNPROCESSABLE_CONTENT = 1007,
 }
