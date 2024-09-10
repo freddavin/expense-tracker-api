@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { prisma } from '../../libs/prisma';
-import { DeleteExpenseSchema } from '../../libs/zod';
+import { ExpenseIdSchema } from '../../libs/zod';
 import { ErrorCode, UnprocessableContentError } from '../../exceptions';
 
 export const deleteExpense = async (req: Request, res: Response) => {
   const { context } = res.locals;
-  const { id } = DeleteExpenseSchema.parse(req.params);
+  const { id } = ExpenseIdSchema.parse(req.params);
 
   const expense = await prisma.expense.deleteMany({
     where: {
@@ -16,7 +16,7 @@ export const deleteExpense = async (req: Request, res: Response) => {
 
   if (expense.count === 0) {
     throw new UnprocessableContentError(
-      'Can not delete this informed id',
+      `Can not delete the expense with id "${id}"`,
       ErrorCode.UNPROCESSABLE_CONTENT
     );
   }

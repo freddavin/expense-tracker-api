@@ -1,12 +1,10 @@
 import { Request, Response } from 'express';
 import { prisma } from '../../libs/prisma';
-import { CreateExpenseSchema } from '../../libs/zod';
+import { ExpenseSchema } from '../../libs/zod';
 
 export const createExpense = async (req: Request, res: Response) => {
   const { context } = res.locals;
-  const { description, category, amount, date } = CreateExpenseSchema.parse(
-    req.body
-  );
+  const { description, category, amount, date } = ExpenseSchema.parse(req.body);
 
   const { id } = await prisma.expense.create({
     data: {

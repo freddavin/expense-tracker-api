@@ -1,14 +1,14 @@
 import z from 'zod';
 import { Category, Filter } from '../../../controllers/expenses';
 
-export const CreateExpenseSchema = z.object({
+export const ExpenseSchema = z.object({
   description: z.string(),
   category: z.nativeEnum(Category),
   amount: z.number().positive(),
   date: z.string().datetime(),
 });
 
-export const DeleteExpenseSchema = z.object({
+export const ExpenseIdSchema = z.object({
   id: z.string().uuid(),
 });
 
