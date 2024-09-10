@@ -11,7 +11,6 @@ export const errorHandler =
   (fn: Function) => async (req: Request, res: Response, next: NextFunction) => {
     try {
       await fn(req, res, next);
-      console.log(' oi');
     } catch (err) {
       if (err instanceof HttpError) {
         return next(err);

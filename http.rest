@@ -28,13 +28,20 @@ content-type: application/json
 Authorization: {{token}}
 
 {
-    "description": "Coffee",
-    "category": "food",
-    "amount": 7.99,
-    "date": "2024-08-31T19:54:23.587Z"
+    "description": "Zomboid",
+    "category": "electronics",
+    "amount": 37.99,
+    "date": "2024-09-02T19:54:23.587Z"
 }
 
 ###
 
 DELETE http://localhost:3000/expenses/679c06bb-81bb-4857-8438-9ee9643a13b1
+content-type: application/json
+Authorization: {{token}}
+
+###
+
+GET http://localhost:3000/expenses
+content-type: application/json
 Authorization: {{token}}
