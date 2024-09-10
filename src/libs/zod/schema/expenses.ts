@@ -1,5 +1,5 @@
 import z from 'zod';
-import { Category } from '../../../controllers/expenses';
+import { Category, Filter } from '../../../controllers/expenses';
 
 export const CreateExpenseSchema = z.object({
   description: z.string(),
@@ -10,4 +10,10 @@ export const CreateExpenseSchema = z.object({
 
 export const DeleteExpenseSchema = z.object({
   id: z.string().uuid(),
+});
+
+export const ListExpensesSchema = z.object({
+  filter: z.nativeEnum(Filter).optional(),
+  startAt: z.string().date().optional(),
+  endAt: z.string().date().optional(),
 });

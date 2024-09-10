@@ -1,12 +1,19 @@
 import { Request, Response } from 'express';
 import { prisma } from '../../libs/prisma';
+import { ListExpensesSchema } from '../../libs/zod';
+import { buildDateFilter } from './helpers';
 
 export const listExpenses = async (req: Request, res: Response) => {
   const { context } = res.locals;
+  const { filter, startAt, endAt } = ListExpensesSchema.parse(req.query);
 
+  const queryFilter = {
+    userId: context.user.id,
+    date: buildDateFilter(filter, startAt, endAt),
+  };
   const expenses = await prisma.expense.findMany({
     where: {
-      userId: context.user.id,
+      ...queryFilter,
     },
     select: {
       id: true,

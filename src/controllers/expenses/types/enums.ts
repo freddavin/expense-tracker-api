@@ -8,3 +8,9 @@ export enum Category {
   Others = 'others',
   Food = 'food',
 }
+
+export enum Filter {
+  PastWeek = 'pastWeek',
+  PastMonth = 'pastMonth',
+  Past3Months = 'past3Months',
+}

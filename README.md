@@ -8,7 +8,7 @@ Expense Tracker API é um serviço de backend desenvolvido em Node.js, com a fin
 - Login de usuários.
 - Tokens JWT para validação e criação de contexto.
 - Bcrypt para criptografia de senha.
-- Zod para validação de schema. 
+- Zod para validação de schema.
 - Filtro de despesas por:
   - Semana anterior
   - Mês anterior
@@ -27,34 +27,36 @@ Expense Tracker API é um serviço de backend desenvolvido em Node.js, com a fin
 - **Autenticação:** JWT
 - **Infraestrutura:** Docker
 
-
 ## Instruções de Configuração
 
 1. **Clone o repositório:**
-    ```bash
-    git clone https://github.com/freddavin/expense-tracker-api.git
-    ```
+
+   ```bash
+   git clone https://github.com/freddavin/expense-tracker-api.git
+   ```
 
 2. **Acesso o diretório:**
-    ```bash
-    cd expense-tracker-api
-    ```
-   
+   ```bash
+   cd expense-tracker-api
+   ```
 3. **Configure o arquivo .env:**
-  - Garanta que dentro da raiz do seu projeto tenha o arquivo de variáveis de ambiente **.env**.
-  - Basta renomear o arquivo **.env.example** e alterar com os dados desejados:
 
-    **.env.example**
-    ```dosini
-    DATABASE_URL="postgresql://user:password@postgres:5432/db?schema=public"
-    PORT=3000
-    SECRET_KEY="secret"
-    POSTGRES_USER="user"
-    POSTGRES_PASSWORD="password"
-    POSTGRES_DB="db"
-    ```
+- Garanta que dentro da raiz do seu projeto tenha o arquivo de variáveis de ambiente **.env**.
+- Basta renomear o arquivo **.env.example** e alterar com os dados desejados:
+
+  **.env.example**
+
+  ```dosini
+  DATABASE_URL="postgresql://user:password@postgres:5432/db?schema=public"
+  PORT=3000
+  SECRET_KEY="secret"
+  POSTGRES_USER="user"
+  POSTGRES_PASSWORD="password"
+  POSTGRES_DB="db"
+  ```
 
 4. **Execute o Docker Compose:**
+
 - Execute o seguinte comando com docker compose para criar as imagens do postgres e da api e, em seguida, iniciar os containers:
   ```bash
   docker compose up -d
@@ -73,26 +75,35 @@ Expense Tracker API é um serviço de backend desenvolvido em Node.js, com a fin
 ### Rotas
 
 - **Auth:**
-    - `POST /auth/signup`
-    - `POST /auth/login`
+
+  - `POST /auth/signup`
+  - `POST /auth/login`
 
 - **Expenses:**
-    - `POST /expenses`
-    - `GET /expenses`
-    - `GET /expenses?filter={period}`
-    - `PUT /expenses/{id}`
-    - `DELETE /expenses/{id}`
+
+  - `POST /expenses`
+  - `GET /expenses`
+  - `GET /expenses?filter={period}`
+  - `GET /expenses?startAt=YYYY-MM-DD&endAt=YYYY-MM-DD`
+  - `PUT /expenses/{id}`
+  - `DELETE /expenses/{id}`
 
   As categorias de despesas suportadas são:
 
-  - Groceries
-  - Leisure
-  - Electronics
-  - Utilities
-  - Clothing
-  - Health
-  - Food
-  - Others
+  - groceries
+  - leisure
+  - electronics
+  - utilities
+  - clothing
+  - health
+  - food
+  - others
+
+  Os períodos suportados são:
+
+  - pastWeek
+  - pastMonth
+  - past3Months
 
 ## Considerações
 

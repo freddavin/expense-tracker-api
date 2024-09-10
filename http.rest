@@ -1,5 +1,4 @@
 @token = {{login.response.body.token}}
-@id = "679c06bb-81bb-4857-8438-9ee9643a13b1"
 
 POST http://localhost:3000/auth/signup
 content-type: application/json
@@ -28,20 +27,37 @@ content-type: application/json
 Authorization: {{token}}
 
 {
-    "description": "Zomboid",
+    "description": "Factorio",
     "category": "electronics",
-    "amount": 37.99,
-    "date": "2024-09-02T19:54:23.587Z"
+    "amount": 5.99,
+    "date": "2024-08-01T10:54:23.587Z"
 }
 
 ###
 
-DELETE http://localhost:3000/expenses/679c06bb-81bb-4857-8438-9ee9643a13b1
+@id = 679c06bb-81bb-4857-8438-9ee9643a13b1
+DELETE http://localhost:3000/expenses/{{id}}
 content-type: application/json
 Authorization: {{token}}
 
 ###
 
 GET http://localhost:3000/expenses
+content-type: application/json
+Authorization: {{token}}
+
+###
+
+# pastWeek, pastMonth, past3Months
+
+GET http://localhost:3000/expenses?filter=pastWeek
+content-type: application/json
+Authorization: {{token}}
+
+###
+
+# YYYY-MM-DD
+
+GET http://localhost:3000/expenses?startAt=2024-08-01&endAt=2024-09-02
 content-type: application/json
 Authorization: {{token}}
