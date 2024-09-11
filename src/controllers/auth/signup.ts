@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { hashSync } from 'bcrypt';
-import { prisma } from '../../libs/prisma';
+import prisma from '../../libs/prisma/connect';
 import { BadRequestError, ErrorCode } from '../../exceptions';
 import { SignupSchema } from '../../libs/zod';
 

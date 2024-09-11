@@ -1,7 +1,6 @@
 services:
   app:
     build: .
-    container_name: expenses_app
     environment:
       - DATABASE_URL=${DATABASE_URL}
       - PORT=${PORT}
@@ -13,7 +12,6 @@ services:
 
   postgres:
     image: bitnami/postgresql:latest
-    container_name: postgres
     restart: always
     ports:
       - 5432:5432

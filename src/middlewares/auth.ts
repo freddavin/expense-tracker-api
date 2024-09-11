@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { prisma } from '../libs/prisma';
+import prisma from '../libs/prisma/connect';
 import { ErrorCode, NotFoundError, UnauthorizedError } from '../exceptions';
 
 interface Token {

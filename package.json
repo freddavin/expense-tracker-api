@@ -8,7 +8,7 @@
     "build": "tsc -p tsconfig.build.json",
     "start": "pnpm run build && node dist/index.js",
     "start:prod": "prisma migrate deploy && node dist/index.js",
-    "test": "jest"
+    "test": "jest --detectOpenHandles --runInBand"
   },
   "keywords": [],
   "author": "Frederico Ferreira",
@@ -19,8 +19,11 @@
     "@types/jest": "^29.5.12",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^22.5.1",
+    "@types/supertest": "^6.0.2",
     "jest": "^29.7.0",
+    "jest-mock-extended": "4.0.0-beta1",
     "prisma": "^5.19.0",
+    "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "tsx": "^4.19.0",
     "typescript": "^5.5.4"

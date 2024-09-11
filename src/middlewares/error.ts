@@ -7,9 +7,6 @@ export const errorMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  if (res.headersSent) {
-    return next(err);
-  }
   const { statusCode, message, errorCode, errors } = err;
   res.status(statusCode).json({ message, errorCode, errors });
 };

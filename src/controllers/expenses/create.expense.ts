@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { prisma } from '../../libs/prisma';
+import prisma from '../../libs/prisma/connect';
 import { ExpenseSchema } from '../../libs/zod';
 
 export const createExpense = async (req: Request, res: Response) => {

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { prisma } from '../../libs/prisma';
+import prisma from '../../libs/prisma/connect';
 import { ListExpensesSchema } from '../../libs/zod';
 import { buildDateFilter } from './helpers';
 

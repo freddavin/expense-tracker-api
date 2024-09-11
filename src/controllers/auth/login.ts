@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { prisma } from '../../libs/prisma';
+import prisma from '../../libs/prisma/connect';
 import { compareSync } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { ErrorCode, UnauthorizedError } from '../../exceptions';
